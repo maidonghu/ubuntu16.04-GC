@@ -4,12 +4,12 @@ sudo apt update && sudo apt install ffmpeg aria2 -y
 wget https://raw.githubusercontent.com/maidonghu/myconf/master/aria2_1.31.0-1_amd64.deb
 sudo dpkg -i aria2_1.31.0-1_amd64.deb
 
-sudo mkdir -p Downloads
+sudo mkdir -p ~/Downloads
 cd Downloads
 sudo touch aria2.log
 sudo touch aria2.session
 cd ~
-wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-AZ/master/aria2.conf
+wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/aria2.conf
 sudo mv aria2.conf /usr/local/etc/aria2.conf
 sudo aria2c --conf-path=/usr/local/etc/aria2.conf
 
