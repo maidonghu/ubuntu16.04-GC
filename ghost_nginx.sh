@@ -17,10 +17,11 @@ sudo apt-get update
 sudo apt-get install -y nginx
 cd /etc/nginx/
 sudo rm sites-enabled/default
-wget ghost.conf .....
-mv =---------  /etc/nginx/sites-available/ghost
+wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/ghost
+sudo mv ghost  /etc/nginx/sites-available/ghost
 sudo ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
-sudo service nginx restart
+wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/nginx.conf
+sudo mv nginx.conf /etc/nginx/
 
 useradd ghost
 mkdir -p /home/ghost
@@ -28,3 +29,5 @@ chown -R ghost:ghost /home/ghost
 
 su -c "cd /var/www/ghost; npm install forever" ghost
 su -c "cd /var/www/ghost; NODE_ENV=production /var/www/ghost/node_modules/forever/bin/forever start index.js" ghost
+
+sudo service nginx restart
