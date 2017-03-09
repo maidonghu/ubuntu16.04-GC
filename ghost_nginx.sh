@@ -18,7 +18,7 @@ sudo apt-get install -y nginx
 cd /etc/nginx/
 sudo rm sites-enabled/default
 wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/ghost
-sudo mv ghost  /etc/nginx/sites-available/ghost
+sudo mv ghost  /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
 wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/nginx.conf
 sudo mv nginx.conf /etc/nginx/
