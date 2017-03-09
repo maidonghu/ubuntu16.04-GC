@@ -23,9 +23,10 @@ sudo ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
 wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/nginx.conf
 sudo mv nginx.conf /etc/nginx/
 
-useradd ghost
-mkdir -p /home/ghost
-chown -R ghost:ghost /home/ghost
+sudo useradd ghost
+sudo mkdir -p /home/ghost
+sudo chown -R ghost:ghost /home/ghost
+sudo chown -R ghost:ghost /var/www/ghost
 
 su -c "cd /var/www/ghost; npm install forever" ghost
 su -c "cd /var/www/ghost; NODE_ENV=production /var/www/ghost/node_modules/forever/bin/forever start index.js" ghost
