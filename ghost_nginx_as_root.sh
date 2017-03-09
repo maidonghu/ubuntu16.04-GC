@@ -7,6 +7,8 @@ mkdir -p /var/www/
 cd /var/www/
 wget https://ghost.org/zip/ghost-latest.zip
 unzip -d ghost ghost-latest.zip
+rm ghost-latest.zip
+cd ~
 
 wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/ghost_config.js
 mv ghost_config.js /var/www/ghost/config.js
@@ -18,6 +20,7 @@ apt-get install -y nginx
 cd /etc/nginx/
 rm sites-enabled/default
 cd ~
+
 wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/ghost
 mv ghost  /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
