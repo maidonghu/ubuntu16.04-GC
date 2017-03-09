@@ -1,0 +1,62 @@
+upstream ghost {  
+    server 127.0.0.1:2368;
+    keepalive 60;  # See http://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive
+}
+
+server {
+listen 80;
+server_name gcloud.mikecloud.info;
+
+# Do not cache anything from /ghost/ 
+location /ghost {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Host $http_host;
+    add_header Cache-Control "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0";
+    proxy_pass http://ghost;
+}
+
+
+# Cache all public pages and posts
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $http_host;
+
+        proxy_cache ghost_cache;
+        proxy_cache_valid 200 10m;
+        proxy_cache_valid 404 1m;
+
+        proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
+        proxy_ignore_headers Set-Cookie;
+        proxy_hide_header Set-Cookie;
+        proxy_pass http://ghost;
+    }
+
+ # Serve all static content directly with nginx
+    location /content/images {
+        alias /var/www/ghost/content/images;
+        access_log off;
+        expires max;
+    }
+
+    location /assets {
+        alias /var/www/ghost/content/themes/casper/assets;
+        access_log off;
+        expires max;
+    }
+
+    location /public {
+        alias /var/www/ghost/core/built/public;
+        access_log off; 
+        expires max;
+    }
+
+    location /ghost/scripts {
+        alias /var/www/ghost/core/built/scripts;
+        access_log off;  
+        expires max;
+    }
+}
