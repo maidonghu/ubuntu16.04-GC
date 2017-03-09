@@ -10,3 +10,8 @@ sudo unzip -d ghost ghost-latest.zip
 
 wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/ghost_config.js
 sudo mv ghost_config.js config.js
+
+nginx=stable
+sudo add-apt-repository ppa:nginx/$nginx
+sudo apt-get update
+sudo apt-get install -y nginx
