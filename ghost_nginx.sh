@@ -12,6 +12,6 @@ wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/ghost_con
 sudo mv ghost_config.js config.js
 
 nginx=stable
-sudo add-apt-repository ppa:nginx/$nginx
+echo -e "\r" | sudo add-apt-repository ppa:nginx/$nginx
 sudo apt-get update
 sudo apt-get install -y nginx
