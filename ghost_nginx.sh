@@ -15,3 +15,16 @@ nginx=stable
 echo -e "\r" | sudo add-apt-repository ppa:nginx/$nginx
 sudo apt-get update
 sudo apt-get install -y nginx
+cd /etc/nginx/
+sudo rm sites-enabled/default
+wget ghost.conf .....
+mv =---------  /etc/nginx/sites-available/ghost
+sudo ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
+sudo service nginx restart
+
+useradd ghost
+mkdir -p /home/ghost
+chown -R ghost:ghost /home/ghost
+
+su -c "cd /var/www/ghost; npm install forever" ghost
+su -c "cd /var/www/ghost; NODE_ENV=production /var/www/ghost/node_modules/forever/bin/forever start index.js" ghost
