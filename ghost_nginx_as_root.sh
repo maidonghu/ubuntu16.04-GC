@@ -9,7 +9,7 @@ wget https://ghost.org/zip/ghost-latest.zip
 unzip -d ghost ghost-latest.zip
 
 wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/ghost_config.js
-mv ghost_config.js config.js
+mv ghost_config.js /var/www/ghost/config.js
 
 nginx=stable
 echo -e "\r" | add-apt-repository ppa:nginx/$nginx
