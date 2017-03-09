@@ -8,3 +8,5 @@ cd /var/www/
 sudo wget https://ghost.org/zip/ghost-latest.zip
 sudo unzip -d ghost ghost-latest.zip
 
+wget https://raw.githubusercontent.com/maidonghu/ubuntu16.04-GC/master/ghost_config.js
+sudo mv ghost_config.js config.js
