@@ -10,7 +10,7 @@ sudo chmod a+w /mnt
 echo UUID=`sudo blkid -s UUID -o value /dev/disk/by-id/google-disk-1]` /mnt ext4 discard,defaults,[NOFAIL] 0 2 | sudo tee -a /etc/fstab
 
 sudo mkdir -p /mnt/Downloads
-cd Downloads
+cd /mnt/Downloads
 sudo touch aria2.log
 sudo touch aria2.session
 cd ~
