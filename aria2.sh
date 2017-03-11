@@ -7,6 +7,8 @@ sudo dpkg -i aria2_1.31.0-1_amd64.deb
 sudo mkfs.ext4 -F -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/disk/by-id/google-disk-1
 sudo mount -o discard,defaults /dev/disk/by-id/google-disk-1 /mnt
 sudo chmod a+w /mnt
+echo UUID=`sudo blkid -s UUID -o value /dev/disk/by-id/google-disk-1]` /mnt ext4 discard,defaults,[NOFAIL] 0 2 | sudo tee -a /etc/fstab
+
 sudo mkdir -p /mnt/Downloads
 cd Downloads
 sudo touch aria2.log
