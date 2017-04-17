@@ -11,6 +11,7 @@ sudo apt update && sudo apt upgrade -y
 sudo timedatectl set-timezone America/Vancouver
 sudo apt install ntp -y
 date
+sudo sed -i 's/#Port 22/Port 50009/' /etc/ssh/sshd_config
 sudo sed -i 's/Port 22/Port 50009/' /etc/ssh/sshd_config
 sudo systemctl restart sshd
 
